@@ -1,0 +1,38 @@
+Nota: Las instrucciones en ingles y detalladas se pueden encontrar en el archivo README.md
+
+------------------Pre-requisitos-------------------
+
+node (>= 10.5.0)
+tsc (>= 3.0.1)
+typescript (>= 3.0.1)
+
+------------------Ejecución------------------------
+1.  La aplicación se puede correr de 3 formas:
+- Docker: Ingresar a la carpeta "codigo fuente", ejecutar "npm install" y despues ejecutar el comando "docker-compose up".
+  Docker Compose creará una imagen del proyecto. Una vez finalice el proceso, se pueden hacer peticiones
+  al servidor API (http://localhost:4040/api/alphabet/validate) y puedes ingresar a swagger-ui desde
+  http://localhost:4040/swagger/api-docs
+
+- Tradicional: Ingresar a la carpeta "codigo fuente", ejecutar "npm install" y despues ejecutar el comando "npm start".
+
+- Compilado: Ingresar a la carpeta "compilado", pegar la carpeta de "node_modules" generada desde el codigo fuente
+  con "npm install" en esta ruta y ejecutar el comando "nodemon src/index.js"
+
+2. Para correr unit tests, se debe ingresar a la carpeta "codigo fuente" y ejecutar el comando "npm run test".
+
+3. Para poder ejecutar el servicio se debe ingresar ya sea por Swagger (http://localhost:4040/swagger/api-docs)
+   o por un cliente como Postman y hacer una peticion asi:
+
+ - url: http://localhost:4040/api/alphabet/validate
+ - tipo: POST
+ {
+    "matrix": [["a", "b"], ["a", "b"]],
+    "word": "ab",
+    "rows": 2,
+    "columns": 2
+}
+
+Nota: Los campos "rows" y "columns" corresponden a la cantidad de filas y columnas respectivamente,
+de la matriz que contiene la sopa de letras. Deben coincidir con el tamaño de la matriz.
+
+Como respuesta te retornara la cantidad de coincidencias de esa palabra en la sopa de letras

@@ -1,0 +1,74 @@
+{
+    "swagger": "2.0",
+    "info": {
+       "version": "1.0.0",
+       "title": "API Server"
+    },
+    "consumes": [
+       "application/json"
+    ],
+    "produces": [
+       "application/json"
+    ],
+    "paths": {
+       "/api/alphabet/validate": {
+          "post": {
+             "description": "Get the number of matches for a word",
+             "parameters": [
+                {
+                  "in": "body",
+                  "schema": {
+                     "$ref": "#/definitions/Request" 
+                  }
+               }
+            ],
+             "responses": {
+                "200": {
+                   "description": "Number of matches response",
+                   "schema": {
+                      "$ref": "#/definitions/Response"
+                   },
+                   "examples": {
+                      "application/json": {
+                         "response": 0
+                      }
+                   }
+                }
+             }
+          }
+       }
+    },
+    "definitions": {
+        "Request": {
+            "type": "object",
+            "properties": {
+                "matrix": {
+                   "type": "array",
+                   "items": {
+                      "type": "array",
+                      "items": {
+                         "type": "string"
+                      }
+                   }
+                },
+                "word": {
+                    "type": "string"
+                 },
+                 "rows": {
+                    "type": "integer"
+                 },
+                 "columns": {
+                    "type": "integer"
+                 }
+             }
+        },
+       "Response": {
+          "type": "object",
+          "properties": {
+             "response": {
+                "type": "integer"
+             }
+          }
+       }
+    }
+ }

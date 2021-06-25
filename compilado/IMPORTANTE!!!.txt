@@ -1,0 +1,1 @@
+Se debe pegar la carpeta de node_modules en esta ruta, para que pueda ejecutarse la aplicacion desde aqui
